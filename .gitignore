@@ -1,0 +1,43 @@
+# ── Secrets & environment ─────────────────────────────────────────────
+# NEVER commit real credentials. Only .env.example (with placeholders) is tracked.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials
+aws-credentials*
+
+# ── AWS / build artifacts ─────────────────────────────────────────────
+*.zip
+function.zip
+package/
+.aws-sam/
+
+# ── Local budget/config files that contain the AWS account id ─────────
+scripts/budget.json
+scripts/budget-notifications.json
+
+# ── Historical raw data (514 MB — too large for git, kept local) ──────
+data/*.csv
+data/*.json
+!data/.gitkeep
+
+# ── Python ────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.python-version
+
+# ── OS / editor ───────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# ── Notes that may contain account-specific values ────────────────────
+scripts/information.md
+notes-private.md
