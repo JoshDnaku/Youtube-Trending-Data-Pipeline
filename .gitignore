@@ -13,6 +13,8 @@ aws-credentials*
 function.zip
 package/
 .aws-sam/
+# Lambda deploy env files (contain resource names / injected secrets)
+**/env.json
 
 # ── Local budget/config files that contain the AWS account id ─────────
 scripts/budget.json
