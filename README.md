@@ -81,7 +81,7 @@ created **disabled** to prevent recurring Glue charges.
 - [x] Stage 0 — Setup (budget alarm, API key, scaffold)
 - [x] Stage 1 — S3, Glue DBs, SNS, IAM
 - [ ] Stage 2 — Bronze ingestion
-- [ ] Stage 3 — Silver transforms
+- [x] Stage 3 — Silver transforms
 - [ ] Stage 4 — Data quality gate
 - [ ] Stage 5 — Gold analytics
 - [ ] Stage 6 — Step Functions + EventBridge

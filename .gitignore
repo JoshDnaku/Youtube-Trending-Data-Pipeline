@@ -43,3 +43,6 @@ Thumbs.db
 # ── Notes that may contain account-specific values ────────────────────
 scripts/information.md
 notes-private.md
+
+# ── Local dev/validation scratch scripts (not part of deployed pipeline) ──
+glue_jobs/_local_*.py
