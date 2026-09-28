@@ -1,0 +1,56 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "CloudWatchLogs",
+      "Effect": "Allow",
+      "Action": [
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:PutLogEvents"
+      ],
+      "Resource": "arn:aws:logs:ap-south-1:122610484990:*:/aws-glue/*"
+    },
+    {
+      "Sid": "S3BucketLevel",
+      "Effect": "Allow",
+      "Action": ["s3:ListBucket", "s3:GetBucketLocation"],
+      "Resource": [
+        "arn:aws:s3:::yt-data-pipeline-bronze-ap-south-1-dev-484990",
+        "arn:aws:s3:::yt-data-pipeline-silver-ap-south-1-dev-484990",
+        "arn:aws:s3:::yt-data-pipeline-gold-ap-south-1-dev-484990",
+        "arn:aws:s3:::yt-data-pipeline-script-ap-south-1-dev-484990"
+      ]
+    },
+    {
+      "Sid": "S3ObjectLevel",
+      "Effect": "Allow",
+      "Action": ["s3:GetObject", "s3:PutObject", "s3:DeleteObject"],
+      "Resource": [
+        "arn:aws:s3:::yt-data-pipeline-bronze-ap-south-1-dev-484990/*",
+        "arn:aws:s3:::yt-data-pipeline-silver-ap-south-1-dev-484990/*",
+        "arn:aws:s3:::yt-data-pipeline-gold-ap-south-1-dev-484990/*",
+        "arn:aws:s3:::yt-data-pipeline-script-ap-south-1-dev-484990/*"
+      ]
+    },
+    {
+      "Sid": "GlueCatalog",
+      "Effect": "Allow",
+      "Action": [
+        "glue:GetDatabase",
+        "glue:GetDatabases",
+        "glue:CreateTable",
+        "glue:UpdateTable",
+        "glue:GetTable",
+        "glue:GetTables",
+        "glue:BatchCreatePartition",
+        "glue:CreatePartition",
+        "glue:GetPartition",
+        "glue:GetPartitions",
+        "glue:BatchGetPartition",
+        "glue:UpdatePartition"
+      ],
+      "Resource": "*"
+    }
+  ]
+}

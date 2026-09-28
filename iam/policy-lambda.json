@@ -1,0 +1,73 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "CloudWatchLogs",
+      "Effect": "Allow",
+      "Action": [
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:PutLogEvents"
+      ],
+      "Resource": "arn:aws:logs:ap-south-1:122610484990:*"
+    },
+    {
+      "Sid": "S3BucketLevel",
+      "Effect": "Allow",
+      "Action": ["s3:ListBucket", "s3:GetBucketLocation"],
+      "Resource": [
+        "arn:aws:s3:::yt-data-pipeline-bronze-ap-south-1-dev-484990",
+        "arn:aws:s3:::yt-data-pipeline-silver-ap-south-1-dev-484990",
+        "arn:aws:s3:::yt-data-pipeline-gold-ap-south-1-dev-484990",
+        "arn:aws:s3:::yt-data-pipeline-script-ap-south-1-dev-484990"
+      ]
+    },
+    {
+      "Sid": "S3ObjectLevel",
+      "Effect": "Allow",
+      "Action": ["s3:GetObject", "s3:PutObject", "s3:DeleteObject"],
+      "Resource": [
+        "arn:aws:s3:::yt-data-pipeline-bronze-ap-south-1-dev-484990/*",
+        "arn:aws:s3:::yt-data-pipeline-silver-ap-south-1-dev-484990/*",
+        "arn:aws:s3:::yt-data-pipeline-gold-ap-south-1-dev-484990/*",
+        "arn:aws:s3:::yt-data-pipeline-script-ap-south-1-dev-484990/*"
+      ]
+    },
+    {
+      "Sid": "SNSPublish",
+      "Effect": "Allow",
+      "Action": "sns:Publish",
+      "Resource": "arn:aws:sns:ap-south-1:122610484990:yt-data-pipeline-alerts-dev"
+    },
+    {
+      "Sid": "GlueCatalogRead",
+      "Effect": "Allow",
+      "Action": [
+        "glue:GetDatabase",
+        "glue:GetDatabases",
+        "glue:GetTable",
+        "glue:GetTables",
+        "glue:GetPartition",
+        "glue:GetPartitions",
+        "glue:CreateTable",
+        "glue:UpdateTable",
+        "glue:BatchCreatePartition",
+        "glue:CreatePartition",
+        "glue:BatchGetPartition"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "AthenaForDQ",
+      "Effect": "Allow",
+      "Action": [
+        "athena:StartQueryExecution",
+        "athena:GetQueryExecution",
+        "athena:GetQueryResults",
+        "athena:StopQueryExecution",
+        "athena:GetWorkGroup"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
