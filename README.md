@@ -82,7 +82,7 @@ created **disabled** to prevent recurring Glue charges.
 - [x] Stage 1 — S3, Glue DBs, SNS, IAM
 - [ ] Stage 2 — Bronze ingestion
 - [x] Stage 3 — Silver transforms
-- [ ] Stage 4 — Data quality gate
+- [x] Stage 4 — Data quality gate
 - [ ] Stage 5 — Gold analytics
 - [ ] Stage 6 — Step Functions + EventBridge
 - [ ] Stage 7 — Athena validation

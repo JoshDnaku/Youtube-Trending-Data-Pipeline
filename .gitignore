@@ -16,6 +16,11 @@ package/
 # Lambda deploy env files (contain resource names / injected secrets)
 **/env.json
 
+# Local invoke/test scratch artifacts
+*response.json
+*payload.json
+sample_*.json
+
 # ── Local budget/config files that contain the AWS account id ─────────
 scripts/budget.json
 scripts/budget-notifications.json
