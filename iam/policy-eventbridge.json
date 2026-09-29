@@ -1,0 +1,11 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "StartPipelineExecution",
+      "Effect": "Allow",
+      "Action": "states:StartExecution",
+      "Resource": "arn:aws:states:ap-south-1:122610484990:stateMachine:yt-data-pipeline-dev"
+    }
+  ]
+}
