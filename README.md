@@ -87,7 +87,7 @@ created **disabled** to prevent recurring Glue charges.
 - [x] Stage 6 — Step Functions + EventBridge
 - [x] Stage 7 — Athena validation
 - [x] Stage 8 — Docs + publish
-- [ ] Stage 9 — Teardown
+- [x] Stage 9 — Teardown
 
 ---
 
