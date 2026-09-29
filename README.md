@@ -86,17 +86,42 @@ created **disabled** to prevent recurring Glue charges.
 - [x] Stage 5 — Gold analytics
 - [x] Stage 6 — Step Functions + EventBridge
 - [x] Stage 7 — Athena validation
-- [ ] Stage 8 — Docs + publish
+- [x] Stage 8 — Docs + publish
 - [ ] Stage 9 — Teardown
 
 ---
+
+## Sample results (Athena on Gold)
+
+Top trending US channels (blended historical + live):
+
+| Channel | Total views | Times trending |
+|---|---|---|
+| ChildishGambinoVEVO | 3.76B | 25 |
+| ibighit (BTS) | 2.24B | 80 |
+| Dude Perfect | 1.87B | 131 |
+| Marvel Entertainment | 1.81B | 125 |
+
+US category view-share: Music 36%, Entertainment 22%, Film & Animation 8%.
+Regional engagement varies widely: Russia 6.5% and Mexico 5.7% vs Japan 2.5%
+and India 2.6% — a real behavioral difference across markets.
+
+See `athena_queries.sql` for the full query set.
 
 ## Setup
 
 Prerequisites: AWS account + CLI, Python 3.9+, a YouTube Data API v3 key.
 
+> **Note:** committed IAM policies, the Glue job definitions, and the Step
+> Functions definition use `<ACCOUNT_ID>` as a placeholder. Replace it with your
+> own 12-digit AWS account ID before deploying. S3 bucket names include a
+> uniqueness suffix (S3 names are globally unique) — adjust to your own.
+
 ```bash
 cp .env.example .env      # then fill in real values (never committed)
 ```
 
-_Full setup and run instructions are added as the pipeline is built._
+Build order: Bronze ingestion Lambda → Silver (Glue backfill + live/reference
+Lambdas) → DQ gate Lambda → Gold Glue job → Step Functions orchestration →
+Athena validation. The EventBridge schedule ships **disabled** to avoid
+recurring Glue charges.

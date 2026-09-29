@@ -6,7 +6,7 @@
       "Type": "Task",
       "Resource": "arn:aws:states:::lambda:invoke",
       "Parameters": {
-        "FunctionName": "arn:aws:lambda:ap-south-1:122610484990:function:yt-data-pipeline-youtube-ingestion-dev",
+        "FunctionName": "arn:aws:lambda:ap-south-1:<ACCOUNT_ID>:function:yt-data-pipeline-youtube-ingestion-dev",
         "Payload": { "triggered_by": "step_functions", "execution_id.$": "$$.Execution.Id" }
       },
       "ResultPath": "$.ingestion_result",
@@ -34,7 +34,7 @@
               "Type": "Task",
               "Resource": "arn:aws:states:::lambda:invoke",
               "Parameters": {
-                "FunctionName": "arn:aws:lambda:ap-south-1:122610484990:function:yt-data-pipeline-live-to-silver-dev",
+                "FunctionName": "arn:aws:lambda:ap-south-1:<ACCOUNT_ID>:function:yt-data-pipeline-live-to-silver-dev",
                 "Payload": { "triggered_by": "step_functions" }
               },
               "Retry": [ { "ErrorEquals": ["States.ALL"], "IntervalSeconds": 15, "MaxAttempts": 2, "BackoffRate": 2 } ],
@@ -49,7 +49,7 @@
               "Type": "Task",
               "Resource": "arn:aws:states:::lambda:invoke",
               "Parameters": {
-                "FunctionName": "arn:aws:lambda:ap-south-1:122610484990:function:yt-data-pipeline-json-to-parquet-dev",
+                "FunctionName": "arn:aws:lambda:ap-south-1:<ACCOUNT_ID>:function:yt-data-pipeline-json-to-parquet-dev",
                 "Payload": { "triggered_by": "step_functions" }
               },
               "Retry": [ { "ErrorEquals": ["States.ALL"], "IntervalSeconds": 15, "MaxAttempts": 2, "BackoffRate": 2 } ],
@@ -67,7 +67,7 @@
       "Type": "Task",
       "Resource": "arn:aws:states:::lambda:invoke",
       "Parameters": {
-        "FunctionName": "arn:aws:lambda:ap-south-1:122610484990:function:yt-data-pipeline-data-quality-dev",
+        "FunctionName": "arn:aws:lambda:ap-south-1:<ACCOUNT_ID>:function:yt-data-pipeline-data-quality-dev",
         "Payload": {
           "database": "yt_pipeline_silver_dev",
           "tables": ["clean_statistics", "clean_reference_data"]
@@ -107,7 +107,7 @@
       "Type": "Task",
       "Resource": "arn:aws:states:::sns:publish",
       "Parameters": {
-        "TopicArn": "arn:aws:sns:ap-south-1:122610484990:yt-data-pipeline-alerts-dev",
+        "TopicArn": "arn:aws:sns:ap-south-1:<ACCOUNT_ID>:yt-data-pipeline-alerts-dev",
         "Subject": "[YT Pipeline] Pipeline completed successfully",
         "Message.$": "States.Format('Pipeline run {} completed. All layers updated.', $$.Execution.Id)"
       },
@@ -118,7 +118,7 @@
       "Type": "Task",
       "Resource": "arn:aws:states:::sns:publish",
       "Parameters": {
-        "TopicArn": "arn:aws:sns:ap-south-1:122610484990:yt-data-pipeline-alerts-dev",
+        "TopicArn": "arn:aws:sns:ap-south-1:<ACCOUNT_ID>:yt-data-pipeline-alerts-dev",
         "Subject": "[YT Pipeline] FAILURE - Ingestion step failed",
         "Message.$": "States.JsonToString($.error)"
       },
@@ -129,7 +129,7 @@
       "Type": "Task",
       "Resource": "arn:aws:states:::sns:publish",
       "Parameters": {
-        "TopicArn": "arn:aws:sns:ap-south-1:122610484990:yt-data-pipeline-alerts-dev",
+        "TopicArn": "arn:aws:sns:ap-south-1:<ACCOUNT_ID>:yt-data-pipeline-alerts-dev",
         "Subject": "[YT Pipeline] FAILURE - Silver transform failed",
         "Message.$": "States.JsonToString($.error)"
       },
@@ -140,7 +140,7 @@
       "Type": "Task",
       "Resource": "arn:aws:states:::sns:publish",
       "Parameters": {
-        "TopicArn": "arn:aws:sns:ap-south-1:122610484990:yt-data-pipeline-alerts-dev",
+        "TopicArn": "arn:aws:sns:ap-south-1:<ACCOUNT_ID>:yt-data-pipeline-alerts-dev",
         "Subject": "[YT Pipeline] WARNING - Data quality checks failed, Gold skipped",
         "Message.$": "States.JsonToString($.dq_result.Payload)"
       },
@@ -151,7 +151,7 @@
       "Type": "Task",
       "Resource": "arn:aws:states:::sns:publish",
       "Parameters": {
-        "TopicArn": "arn:aws:sns:ap-south-1:122610484990:yt-data-pipeline-alerts-dev",
+        "TopicArn": "arn:aws:sns:ap-south-1:<ACCOUNT_ID>:yt-data-pipeline-alerts-dev",
         "Subject": "[YT Pipeline] FAILURE - Gold aggregation failed",
         "Message.$": "States.JsonToString($.error)"
       },

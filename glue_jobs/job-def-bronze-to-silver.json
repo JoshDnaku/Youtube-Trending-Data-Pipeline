@@ -1,6 +1,6 @@
 {
   "Name": "yt-data-pipeline-bronze-to-silver-dev",
-  "Role": "arn:aws:iam::122610484990:role/yt-data-pipeline-glue-role-dev",
+  "Role": "arn:aws:iam::<ACCOUNT_ID>:role/yt-data-pipeline-glue-role-dev",
   "GlueVersion": "4.0",
   "WorkerType": "G.1X",
   "NumberOfWorkers": 2,

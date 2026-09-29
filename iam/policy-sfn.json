@@ -5,7 +5,7 @@
       "Sid": "InvokeOurLambdas",
       "Effect": "Allow",
       "Action": "lambda:InvokeFunction",
-      "Resource": "arn:aws:lambda:ap-south-1:122610484990:function:yt-data-pipeline-*"
+      "Resource": "arn:aws:lambda:ap-south-1:<ACCOUNT_ID>:function:yt-data-pipeline-*"
     },
     {
       "Sid": "RunGlueJobs",
@@ -22,7 +22,7 @@
       "Sid": "PublishAlerts",
       "Effect": "Allow",
       "Action": "sns:Publish",
-      "Resource": "arn:aws:sns:ap-south-1:122610484990:yt-data-pipeline-alerts-dev"
+      "Resource": "arn:aws:sns:ap-south-1:<ACCOUNT_ID>:yt-data-pipeline-alerts-dev"
     }
   ]
 }

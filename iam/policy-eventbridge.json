@@ -5,7 +5,7 @@
       "Sid": "StartPipelineExecution",
       "Effect": "Allow",
       "Action": "states:StartExecution",
-      "Resource": "arn:aws:states:ap-south-1:122610484990:stateMachine:yt-data-pipeline-dev"
+      "Resource": "arn:aws:states:ap-south-1:<ACCOUNT_ID>:stateMachine:yt-data-pipeline-dev"
     }
   ]
 }

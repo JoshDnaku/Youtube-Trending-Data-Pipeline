@@ -9,7 +9,7 @@
         "logs:CreateLogStream",
         "logs:PutLogEvents"
       ],
-      "Resource": "arn:aws:logs:ap-south-1:122610484990:*"
+      "Resource": "arn:aws:logs:ap-south-1:<ACCOUNT_ID>:*"
     },
     {
       "Sid": "S3BucketLevel",
@@ -37,7 +37,7 @@
       "Sid": "SNSPublish",
       "Effect": "Allow",
       "Action": "sns:Publish",
-      "Resource": "arn:aws:sns:ap-south-1:122610484990:yt-data-pipeline-alerts-dev"
+      "Resource": "arn:aws:sns:ap-south-1:<ACCOUNT_ID>:yt-data-pipeline-alerts-dev"
     },
     {
       "Sid": "GlueCatalogRead",

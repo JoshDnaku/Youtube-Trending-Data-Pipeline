@@ -9,7 +9,7 @@
         "logs:CreateLogStream",
         "logs:PutLogEvents"
       ],
-      "Resource": "arn:aws:logs:ap-south-1:122610484990:*:/aws-glue/*"
+      "Resource": "arn:aws:logs:ap-south-1:<ACCOUNT_ID>:*:/aws-glue/*"
     },
     {
       "Sid": "S3BucketLevel",
