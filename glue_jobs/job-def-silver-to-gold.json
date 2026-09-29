@@ -1,0 +1,24 @@
+{
+  "Name": "yt-data-pipeline-silver-to-gold-dev",
+  "Role": "arn:aws:iam::122610484990:role/yt-data-pipeline-glue-role-dev",
+  "GlueVersion": "4.0",
+  "WorkerType": "G.1X",
+  "NumberOfWorkers": 2,
+  "MaxRetries": 0,
+  "Timeout": 30,
+  "ExecutionProperty": { "MaxConcurrentRuns": 1 },
+  "Command": {
+    "Name": "glueetl",
+    "PythonVersion": "3",
+    "ScriptLocation": "s3://yt-data-pipeline-script-ap-south-1-dev-484990/glue_jobs/silver_to_gold_analytics.py"
+  },
+  "DefaultArguments": {
+    "--job-language": "python",
+    "--enable-metrics": "true",
+    "--enable-continuous-cloudwatch-log": "true",
+    "--job-bookmark-option": "job-bookmark-disable",
+    "--silver_database": "yt_pipeline_silver_dev",
+    "--gold_bucket": "yt-data-pipeline-gold-ap-south-1-dev-484990",
+    "--gold_database": "yt_pipeline_gold_dev"
+  }
+}
